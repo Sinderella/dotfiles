@@ -1,15 +1,19 @@
 # Installation
 
 Install zsh and set it to default shell:
-  $ chsh -s $(which zsh)
+```bash
+$ chsh -s $(which zsh)
+```
 
 Clone this repository:
-  git clone TODO ~/.dotfiles
+```bash
+$ git clone https://github.com/Sinderella/dotfiles.git ~/.dotfiles
+```
 
 Install [rcm](https://github.com/thoughtbot/rcm#installation)
 
 Install [zplug](https://github.com/zplug/zplug)
-```console
+```bash
 $ curl -sL zplug.sh/installer | zsh
 ```
 
