@@ -18,6 +18,8 @@ $ curl -sL zplug.sh/installer | zsh
 ```
 
 Install the dotfiles:
-  env RCRC=$HOME/.dotfiles/rcrc rcup
+```bash
+$ env RCRC=$HOME/.dotfiles/rcrc rcup
+```
 
 Special thanks to https://thoughtbot.com/ for tools and snippets that are taken.
