@@ -1,0 +1,23 @@
+# cat ~/.aliases
+alias e=$EDITOR
+alias ..='cd ..'
+alias -g ...='../..'
+
+alias l='ls -laFh'     #size,show type,human readable
+alias la='ls -lAFh'   #long list,show almost all,show type,human readable
+
+alias grep='grep --color'
+
+alias t='tail -f'
+
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g L="| less"
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# local config
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
