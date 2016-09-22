@@ -28,6 +28,11 @@ Install the dotfiles:
 $ env RCRC=$HOME/.dotfiles/rcrc rcup
 ```
 
+Build YouCompleteMe:
+```bash
+$ ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
+```
+
 Please note that it only tested on linux.
 
 Special thanks to https://thoughtbot.com/ for tools and snippets that are taken.
