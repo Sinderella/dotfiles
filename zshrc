@@ -63,8 +63,8 @@ bindkey '^[[1~' beginning-of-line # tmux
 bindkey '^[[F' end-of-line # iterm
 bindkey '^[[4~' end-of-line # tmux
 
-bindkey '^[OD' backward-word # putty
-bindkey '^[OC' forward-word # putty
+bindkey '^[[D' backward-word # putty
+bindkey '^[[C' forward-word # putty
 
 setopt COMPLETE_ALIASES
 
