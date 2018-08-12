@@ -31,7 +31,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+eval "$(gdircolors -b ~/.dircolors/dircolors.256dark)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -68,8 +68,10 @@ bindkey '^[[C' forward-word # putty
 
 setopt COMPLETE_ALIASES
 
-export EDITOR='vim'
+export EDITOR='nvim'
 export TERM=xterm-256color
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=11"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
@@ -77,3 +79,5 @@ export TERM=xterm-256color
 # local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

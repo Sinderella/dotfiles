@@ -7,7 +7,6 @@ endif
 syntax enable
 set background=dark
 colorscheme solarized
-let g:solarized_termcolors = 256
 let g:solarized_termtransa = 1
 let g:is_posix = 1
 set number
@@ -32,16 +31,9 @@ set list listchars=tab:»·,trail:·,nbsp:·
 set nojoinspaces
 
 let mapleader = " "
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
-
-" move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
@@ -50,11 +42,6 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
@@ -77,6 +64,14 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+" toggle relative line numbers
+nnoremap <F3> :NumbersToggle<CR>
+nnoremap <F4> :NumbersOnOff<CR>
+
+" fzf
+let g:fzf_buffers_jump = 1
+nnoremap <C-p> :<C-u>FZF<CR>
+
 " start where you took off last time
 augroup vimrcEx
   autocmd!
@@ -94,6 +89,26 @@ augroup END
 " disable auto comment on next line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" terminal map
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+
+  highlight! link TermCursor Cursor
+  highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=9
+endif
+
+let g:ale_linters = {
+\  'python': ['pylint']
+\ }
+
+" Mappings in the style of unimpaired-next
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
+
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
