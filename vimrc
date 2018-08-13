@@ -19,6 +19,7 @@ set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
+set inccommand=split
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running command
 set tabstop=2
@@ -29,6 +30,7 @@ set textwidth=80
 set colorcolumn=+1
 set list listchars=tab:»·,trail:·,nbsp:·
 set nojoinspaces
+
 
 let mapleader = " "
 
