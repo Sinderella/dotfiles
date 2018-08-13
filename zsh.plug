@@ -1,9 +1,9 @@
 source ~/.zplug/init.zsh
 
 zplug "Tarrasch/zsh-bd"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting"
 
 [[ -f ~/.zsh.plug.local ]] && source ~/.zsh.plug.local
 

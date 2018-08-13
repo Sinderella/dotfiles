@@ -6,7 +6,7 @@ endif
 
 syntax enable
 set background=dark
-colorscheme solarized
+silent! colorscheme solarized
 let g:solarized_termtransa = 1
 let g:is_posix = 1
 set number
@@ -31,8 +31,9 @@ set colorcolumn=+1
 set list listchars=tab:»·,trail:·,nbsp:·
 set nojoinspaces
 
-
 let mapleader = " "
+
+let g:deoplete#enable_at_startup = 1
 
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
@@ -41,14 +42,11 @@ nmap s <Plug>(easymotion-overwin-f2)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 
 let g:ycm_auto_trigger = 1
 let g:ycm_confirm_extra_conf = 0
@@ -109,6 +107,12 @@ nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
+
+" grepper
+nnoremap <leader>g :Grepper -tool ag<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local

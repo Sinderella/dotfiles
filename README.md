@@ -15,7 +15,7 @@ Install [rcm](https://github.com/thoughtbot/rcm#installation)
 Install [vim-plug](https://github.com/junegunn/vim-plug#installation)
 
 ```bash
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+$ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 Install [zplug](https://github.com/zplug/zplug)
@@ -28,11 +28,12 @@ Install the dotfiles:
 $ env RCRC=$HOME/.dotfiles/rcrc rcup
 ```
 
-Build YouCompleteMe:
+Clone solarized dircolors
 ```bash
-$ ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
+$ git clone https://github.com/seebi/dircolors-solarized
 ```
 
 Please note that it only tested on linux.
 
 Special thanks to https://thoughtbot.com/ for tools and snippets that are taken.
+

@@ -31,7 +31,11 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(gdircolors -b ~/.dircolors/dircolors.256dark)"
+if which gdircolors > /dev/null 2>&1; then
+  eval "$(gdircolors -b ~/.dircolors/dircolors.ansi-dark)"
+elif which dircolors > /dev/null 2>&1; then
+  eval "$(dircolors -b ~/.dircolors/dircolors.ansi-dark)"
+fi
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
