@@ -1,6 +1,7 @@
 source ~/.zplug/init.zsh
 
 zplug "Tarrasch/zsh-bd"
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"

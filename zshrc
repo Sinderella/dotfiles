@@ -6,14 +6,8 @@ done
 # load plugins
 [[ -f ~/.zplug/init.zsh ]] && [[ -f ~/.zsh.plug ]] && source ~/.zsh.plug
 
-# set up the prompt
-autoload -U colors && colors
-export PS1="[%{$fg[red]%}%* - %D%{$reset_color%} %{$fg[blue]%}%n@%M%{$reset_color%}] %~
-# "
-
-autoload -Uz promptinit
-# promptinit
-# prompt adam1
+SPACESHIP_DIR_COLOR='005fff'
+SPACESHIP_CHAR_SUFFIX=' '
 
 setopt histignorealldups sharehistory
 
