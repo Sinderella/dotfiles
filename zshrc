@@ -6,9 +6,6 @@ done
 # load plugins
 [[ -f ~/.zplug/init.zsh ]] && [[ -f ~/.zsh.plug ]] && source ~/.zsh.plug
 
-SPACESHIP_DIR_COLOR='005fff'
-SPACESHIP_CHAR_SUFFIX=' '
-
 setopt histignorealldups sharehistory
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
