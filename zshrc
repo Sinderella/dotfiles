@@ -8,6 +8,8 @@ done
 
 setopt histignorealldups sharehistory
 
+SPACESHIP_BATTERY_SHOW=false
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=4000
 SAVEHIST=4000
@@ -64,9 +66,75 @@ bindkey '^[[C' forward-word # putty
 setopt COMPLETE_ALIASES
 
 export EDITOR='nvim'
-export TERM=xterm-256color
+# export TERM=xterm-256color
+export TERM=screen-256color
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=11"
+
+# vim mode config
+# ---------------
+
+# Activate vim mode.
+bindkey -v
+
+# Remove mode switching delay.
+KEYTIMEOUT=5
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+      [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+
+  elif [[ ${KEYMAP} == main ]] ||
+        [[ ${KEYMAP} == viins ]] ||
+        [[ ${KEYMAP} = '' ]] ||
+        [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+  zle reset-prompt
+  zle -R
+}
+zle -N zle-keymap-select
+
+# Use beam shape cursor on startup.
+echo -ne '\e[5 q'
+
+# Use beam shape cursor for each new prompt.
+preexec() {
+    echo -ne '\e[5 q'
+}
+
+zle-line-init () {
+  zle -K viins
+  echo -ne "\e]50;CursorShape=1\a"  # vertical bar
+}
+
+bindkey "^?" backward-delete-char
+
+autoload edit-command-line; zle -N edit-command-line
+
+bindkey -M vicmd v edit-command-line
+
+# export TERM=screen-256color-bce
+export VMWARE_USE_SHIPPED_GTK="yes"
+export SCRIPT_DIR="$HOME/.config/i3/scripts"
+
+# setxkbmap -layout gb,th
+# setxkbmap -option 'grp:win_space_toggle'
+
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/nh/install/games
+export PATH=$PATH:$HOME/bin/scripts
+
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+export BAT_THEME='OneHalfDark'
+export BAT_STYLE='auto'
+
+[[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases

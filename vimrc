@@ -5,9 +5,9 @@ if filereadable(expand("~/.vimrc.bundles"))
 endif
 
 syntax enable
+silent! colorscheme onedark
 set background=dark
-silent! colorscheme solarized
-let g:solarized_termtransa = 1
+" let g:solarized_termtrans = 1
 let g:is_posix = 1
 set number
 set numberwidth=4
@@ -44,7 +44,7 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 set laststatus=2
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 
@@ -64,13 +64,23 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+
+hi IndentGuidesOdd  ctermbg=237
+hi IndentGuidesEven ctermbg=darkgrey
+
 " toggle relative line numbers
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
 
+nnoremap <F5> "=strftime("%d/%m/%y %H:%M:%S %Z")<CR>P
+inoremap <F5> <C-R>=strftime("%d/%m/%y %H:%M:%S %Z")<CR>
+
 " fzf
 let g:fzf_buffers_jump = 1
 nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <C-b> :<C-u>Buffers<CR>
 
 " start where you took off last time
 augroup vimrcEx
@@ -102,6 +112,13 @@ let g:ale_linters = {
 \  'python': ['pylint']
 \ }
 
+let g:ale_linters_explicit = 1
+let g:ale_python_flake8_executable = 'python3'
+let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:ale_python_mypy_options = '--python-version 3.5'
+let b:ale_fixers = {'python': ['isort', 'yapf']}
+
 " Mappings in the style of unimpaired-next
 nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
@@ -113,6 +130,53 @@ nnoremap <leader>g :Grepper -tool ag<cr>
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
+
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
+
+" " Copy to clipboard
+vnoremap  y  "+y
+nnoremap  y  "+y
+
+set fo-=t
+
+let vim_markdown_preview_github=1
+let vim_markdown_preview_toggle=1
+let vim_markdown_preview_hotkey='<C-m>'
+let g:vim_markdown_new_list_item_indent = 0
+
+autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+let g:mdip_imgdir = 'img'
+let g:mdip_imgname = 'image'
+
+let g:ale_fix_on_save = 1
+
+" redraw when focus
+au FocusGained * :redraw!
+
+set t_ut=
+" if &term =~ '256color'
+"   " Disable Background Color Erase (BCE) so that color schemes
+"   " work properly when Vim is used inside tmux and GNU screen.
+"   set t_ut=
+" endif
+
+" au FileType python setl sw=2 sts=2 et
+
+autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+autocmd VimLeave * silent exec "! echo -ne '\e[5 q'" 
+
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
+let g:jedi#goto_definitions_command = ''  " dynamically done for ft=python.
+let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
+let g:jedi#rename_command = '<Leader>gR'
+let g:jedi#usages_command = '<Leader>gu'
+let g:jedi#completions_enabled = 0
+let g:jedi#smart_auto_mappings = 1
+
+" Unite/ref and pydoc are more useful.
+let g:jedi#documentation_command = '<Leader>_K'
+let g:jedi#auto_close_doc = 1
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
