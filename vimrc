@@ -33,7 +33,7 @@ set nojoinspaces
 
 let mapleader = " "
 
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
@@ -116,8 +116,18 @@ let g:ale_linters_explicit = 1
 let g:ale_python_flake8_executable = 'python3'
 let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:ale_python_mypy_options = '--python-version 3.5'
+let g:ale_python_mypy_options = '--python-version 3.6'
 let b:ale_fixers = {'python': ['isort', 'yapf']}
+let g:vista_default_executive = 'ctags'
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+" set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+let g:airline_section_c = "%<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__# %{NearestMethodOrFunction()}%"
+
 
 " Mappings in the style of unimpaired-next
 nmap <silent> [W <Plug>(ale_first)
@@ -126,7 +136,9 @@ nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
 
 " grepper
-nnoremap <leader>g :Grepper -tool ag<cr>
+nnoremap <leader>g :Rg<cr>
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>b :Buffers<cr>
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
@@ -136,6 +148,7 @@ xmap gs <plug>(GrepperOperator)
 " " Copy to clipboard
 vnoremap  y  "+y
 nnoremap  y  "+y
+inoremap  <C-V> <C-R>+
 
 set fo-=t
 
@@ -152,6 +165,8 @@ let g:ale_fix_on_save = 1
 
 " redraw when focus
 au FocusGained * :redraw!
+
+let g:table_mode_corner='|'
 
 set t_ut=
 " if &term =~ '256color'
@@ -177,6 +192,10 @@ let g:jedi#smart_auto_mappings = 1
 " Unite/ref and pydoc are more useful.
 let g:jedi#documentation_command = '<Leader>_K'
 let g:jedi#auto_close_doc = 1
+
+command! -nargs=0 Sw w !sudo tee % > /dev/null
+
+set diffopt+=vertical
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local

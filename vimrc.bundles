@@ -1,22 +1,24 @@
 " Install Plugins
 call plug#begin('~/.vim/plugged')
 
+" Plug 'SirVer/ultisnips'
+" Plug 'ervandew/supertab'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'bkad/CamelCaseMotion'
 Plug 'davidhalter/jedi-vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'ervandew/supertab'
 Plug 'ferrine/md-img-paste.vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vista.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-grepper'
@@ -31,8 +33,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'w0rp/ale'
+Plug 'wellle/targets.vim'
+Plug 'wellle/tmux-complete.vim'
 Plug 'wincent/terminus'
 Plug 'zchee/deoplete-jedi'
+Plug 'darfink/vim-plist'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
     source ~/.vimrc.bundles.local

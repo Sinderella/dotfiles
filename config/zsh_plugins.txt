@@ -1,0 +1,8 @@
+Tarrasch/zsh-bd
+denysdovhan/spaceship-prompt
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+zdharma/fast-syntax-highlighting
+oldratlee/hacker-quotes
+skywind3000/z.lua
+b4b4r07/enhancd
