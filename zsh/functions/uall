@@ -1,7 +1,0 @@
-# Update all
-
-function uall() {
-  git pull
-  $EDITOR +PlugInstall +PlugUpdate +PlugUpgrade +qall
-  zplug update
-}

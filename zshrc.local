@@ -1,0 +1,10 @@
+
+. ~/.rvm/scripts/rvm
+. ~/.zsh_plugins.sh
+
+export EDITOR="nvim"
+export FZF_BASE="/usr/local/opt/fzf/"
+
+alias e="nvim"
+alias l="lsd -lah"
+
