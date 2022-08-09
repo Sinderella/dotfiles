@@ -1,0 +1,45 @@
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
+
+export EDITOR='nvim'
+
+function set_win_title() {
+  echo -ne "\033]0; $(echo $USER)@$(hostname -s):$(dirs) \007"
+}
+precmd_functions+=(set_win_title)
+
+function update_all() {
+  git -C ~zsh-autocomplete pull
+  git -C ${HOME}/clones/alacritty pull
+  git -C ${HOME}/clones/zellij pull
+
+  brew update && brew upgrade
+}
+
+alias lg='lazygit'
+alias ls='lsd'
+alias l='lsd -lah'
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+
+source ${HOME}/.cargo/env
+source $(brew --prefix)/opt/asdf/libexec/asdf.sh
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+
+source ${HOME}/clones/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+export KALEIDOSCOPE_DIR=${HOME}/clones/Kaleidoscope
+
+export PATH="$PATH:/Users/thanats/Library/Python/3.9/bin"
+export PATH="$PATH:/Users/thanats/.local/bin"
+export PATH=$PATH:/usr/local/go/bin
+
+export GOPATH=$HOME/go
+
+source ~/.zshrc.local
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
