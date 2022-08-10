@@ -14,6 +14,7 @@ function update_all() {
   git -C ${HOME}/clones/alacritty pull
   git -C ${HOME}/clones/zellij pull
 
+  chezmoi upgrade
   brew update && brew upgrade
 }
 
@@ -37,9 +38,8 @@ export KALEIDOSCOPE_DIR=${HOME}/clones/Kaleidoscope
 
 export PATH="$PATH:/Users/thanats/Library/Python/3.9/bin"
 export PATH="$PATH:/Users/thanats/.local/bin"
-export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:/usr/local/go/bin"
 
 export GOPATH=$HOME/go
 
 source ~/.zshrc.local
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
