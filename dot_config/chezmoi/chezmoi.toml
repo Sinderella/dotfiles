@@ -1,0 +1,7 @@
+[edit]
+    command = "code"
+    args = ["--wait"]
+
+[merge]
+    command = "code"
+    args = ["--wait", "-m", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]

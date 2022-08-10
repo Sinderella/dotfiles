@@ -21,6 +21,7 @@ function update_all() {
 alias lg='lazygit'
 alias ls='lsd'
 alias l='lsd -lah'
+alias e='nvim'
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
